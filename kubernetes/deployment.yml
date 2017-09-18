@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bind
+spec:
+  revisionHistoryLimit: 4
+  template:
+    metadata:
+      labels:
+        app: bind
+    spec:
+      hostNetwork: true
+      containers:
+        - name: bind
+          image: einyx/bind:0.2
+          imagePullPolicy: Always
+

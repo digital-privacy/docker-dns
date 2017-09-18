@@ -1,13 +1,12 @@
-FROM debian:jessie-slim
+FROM ubuntu:zesty
 MAINTAINER alessio@linux.com
 
 ENV BIND_USER=bind \
-    BIND_VERSION=1:9.9.5 \
     DATA_DIR=/data
 
 RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y wget bind9=${BIND_VERSION}* bind9-host=${BIND_VERSION}* dnsutils \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y wget bind9* bind9-host* dnsutils \
  && rm -rf /var/lib/apt/lists/*
 
 COPY srvzone /srvzone 
