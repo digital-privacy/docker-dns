@@ -1,4 +1,4 @@
-[![Docker Repository on Quay.io](https://quay.io/repository/einyx/kubernets-bind/status "Docker Repository on Quay.io")](https://quay.io/repository/einyx/kubernets-bind)
+[![Docker Repository on Quay.io](https://quay.io/repository/einyx/kubernetes-bind/status "Docker Repository on Quay.io")](https://quay.io/repository/einyx/kubernetes-bind)
 
 # einyx/bind:0.2
 
