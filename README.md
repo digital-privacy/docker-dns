@@ -47,7 +47,7 @@ docker pull einyx/bind:0.2
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t einyx/bind github.com/sameersbn/docker-bind
+docker build -t einyx/bind .
 ```
 
 ## Quickstart
