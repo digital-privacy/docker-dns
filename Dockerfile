@@ -1,4 +1,4 @@
-FROM ubuntu:zesty
+FROM debian:testing
 MAINTAINER alessio@linux.com
 
 ENV BIND_USER=bind \
