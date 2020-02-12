@@ -1,6 +1,6 @@
-[![Docker Repository on Quay.io](https://quay.io/repository/einyx/kubernetes-bind/status "Docker Repository on Quay.io")](https://quay.io/repository/einyx/kubernetes-bind)
+[![Docker Repository on Quay.io](https://quay.io/repository/digitalprivacy/kubernetes-bind/status "Docker Repository on Quay.io")](https://quay.io/repository/digitalprivacy/kubernetes-bind)
 
-# einyx/bind:0.2
+# digitalprivacy/bind:0.2
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -36,18 +36,18 @@ If you find this image useful here's how you can help:
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/einyx/docker-bind) and is the recommended method of installation.
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/digitalprivacy/docker-bind) and is the recommended method of installation.
 
-> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/einyx/kubernetes-bind)
+> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/digitalprivacy/kubernetes-bind)
 
 ```bash
-docker pull einyx/bind:0.2
+docker pull digitalprivacy/bind:0.2
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t einyx/bind .
+docker build -t digitalprivacy/bind .
 ```
 
 ## Quickstart
@@ -58,7 +58,7 @@ Start BIND using:
 docker run --name bind -d --restart=always \
   --publish 53:53/tcp --publish 53:53/udp --publish 10000:10000/tcp \
   --volume /srv/docker/bind:/data \
-  einyx/bind:0.2
+  digitalprivacy/bind:0.2
 ```
 
 ## Command-line arguments
@@ -69,7 +69,7 @@ You can customize the launch command of BIND server by specifying arguments to `
 docker run --name bind -it --rm \
   --publish 53:53/tcp --publish 53:53/udp --publish 10000:10000/tcp \
   --volume /srv/docker/bind:/data \
-  einyx/bind:0.1 -h
+  digitalprivacy/bind:0.1 -h
 ```
 
 ## Persistence
