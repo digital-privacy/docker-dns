@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+if [ -z "$TLS" ]; then
+	openssl genrsa -out /etc/stunnel/dns.key 1024
+  openssl req -new -key /etc/stunnel/dns.key -out /etc/stunnel/dns.crt -x509 -days 365 -subj "/C=NL/ST=Netherlands/L=Amsterdam/O=/CN=dns" 
+fi
+
+
 ROOT_PASSWORD=${ROOT_PASSWORD:-password}
 
 BIND_DATA_DIR=${DATA_DIR}/bind
@@ -57,6 +63,9 @@ if [[ -z ${1} ]]; then
   echo "Generating zones for opennic..."
   mkdir -p /data/bind/etc/opennic/slave
   chown -R bind:${BIND_USER} /data/bind/etc/opennic/
+  if [ -z "$TLS" ]; then
+    stunnel /etc/stunnel/dnstls.conf
+  fi
   /srvzone -d
   echo "Starting named..."
   exec $(which named) -u ${BIND_USER} -g ${EXTRA_ARGS}
