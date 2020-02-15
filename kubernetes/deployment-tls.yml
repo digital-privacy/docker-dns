@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-deployment
+  labels:
+    app: dns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dns
+  template:
+    metadata:
+      labels:
+        app: dns
+    spec:
+      containers:
+      - name: dns
+        image: digitalprivacy/dns:0.8
+        #command: ["bash", "-c"]
+        #args: ["tail -f /dev/null"]
+        ports:
+        - containerPort: 853
+          #env:
+          #- name: STUNNEL
+          #  value: "true"
+        volumeMounts:
+              - name: dns-pem
+                mountPath: /etc/stunnel/cert/dns.pem
+                subPath: dns.pem
+                readOnly: true
+              - name: dns-key
+                mountPath: /etc/stunnel/keys/dns.key
+                subPath: dns.key
+                readOnly: true
+      volumes:
+        - name: dns-pem
+          secret:
+            secretName: dns-pem
+        - name: dns-key
+          secret:
+            secretName: dns-key

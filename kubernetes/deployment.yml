@@ -1,17 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bind
+  name: dns-deployment
+  labels:
+    app: dns
 spec:
-  revisionHistoryLimit: 4
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dns
   template:
     metadata:
       labels:
-        app: bind
+        app: dns
     spec:
-      hostNetwork: true
       containers:
-        - name: bind
-          image: einyx/bind:0.2
-          imagePullPolicy: Always
-
+      - name: dns
+        image: digitalprivacy/bind:latest
+        ports:
+        - containerPort: 53
